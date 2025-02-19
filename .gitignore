@@ -1,0 +1,31 @@
+
+
+# Reference: https://github.com/github/gitignore
+# From: https://gist.github.com/edesdan/6bb43343740bcd54ef0f56a384a2f66f
+
+.DS_Store
+
+*.class
+*.log
+
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+
+.idea/
+*.iml
+
+**/target/
+mvnw
+mvnw.cmd
+
+application-dev.properties
+
+.vscode/
+.history/

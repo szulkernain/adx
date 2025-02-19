@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="satish" id="1">
+        <createTable tableName="item_tags">
+            <column name="id" type="CHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="tag_id" type="CHAR(36)">
+                <constraints nullable="false" foreignKeyName="fk_item_tags" references="tags(id)"/>
+            </column>
+            <column name="item_id" type="CHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="version" type="INT" />
+            <column name="created_date" type="TIMESTAMP" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="VARCHAR(125)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="TIMESTAMP" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(125)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addUniqueConstraint
+                tableName="item_tags"
+                columnNames="tag_id, item_id"
+                constraintName="ux_item_tags"
+        />
+        <rollback>
+            <dropTable tableName="item_tags"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

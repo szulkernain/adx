@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="satish" id="1">
+        <sql>
+            INSERT INTO users (id, first_name, last_name, email_address,
+                               password, is_enabled, credentials_expired, is_expired, is_locked, version)
+            VALUES ('d9acca13-18b9-4a02-bc11-ce30f14d2341',
+                    'Satish', 'Kamatkar', 'skamatkar@ambrygenetics.com',
+                    <!-- pwd that I love -->
+                    '$2a$10$Q2C/p92vMOnPnjhj9Mr2wOe0ZnhRwuac2RpqRw/0JBrnc0tq8i.a.', 1, 0, 0, 0, 1);
+
+            INSERT INTO user_roles (id, user_id, role_id, version)
+            VALUES ('eed7399f-6c1f-41db-a959-932d933b27e0', 'd9acca13-18b9-4a02-bc11-ce30f14d2341',
+                    'cc1d71e9-ca5c-49ae-8fab-2c086817213e', 0);
+
+            INSERT INTO user_roles (id, user_id, role_id, version)
+            VALUES ('fgd7399f-6c1f-41db-a959-932d933b27e0', 'd9acca13-18b9-4a02-bc11-ce30f14d2341',
+                    'cdbc947f-eb29-42eb-ad0a-a001c1bd7e80', 0);
+
+        </sql>
+    </changeSet>
+</databaseChangeLog>

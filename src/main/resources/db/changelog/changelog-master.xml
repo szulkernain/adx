@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <include file="/db/changelog/changes/create-table-users.xml"/>
+    <include file="/db/changelog/changes/create-table-roles.xml"/>
+    <include file="/db/changelog/changes/create-table-user-roles.xml"/>
+    <include file="/db/changelog/changes/add-user-roles.xml"/>
+    <include file="/db/changelog/changes/add-users.xml"/>
+    <include file="/db/changelog/changes/create-table-verification-tokens.xml"/>
+    <include file="/db/changelog/changes/create-table-password-reset-tokens.xml"/>
+    <include file="/db/changelog/changes/create-table-refresh-tokens.xml"/>
+    <include file="/db/changelog/changes/create-table-tags.xml"/>
+    <include file="/db/changelog/changes/create-table-item-tags.xml"/>
+    <include file="/db/changelog/changes/create-table-vehicles.xml"/>
+    <include file="/db/changelog/changes/create-table-user-vehicles.xml"/>
+    <include file="/db/changelog/changes/create-table-vehicle-services.xml"/>
+</databaseChangeLog>

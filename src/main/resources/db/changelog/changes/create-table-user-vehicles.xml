@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="satish" id="1">
+        <createTable tableName="user_vehicles">
+            <column name="id" type="CHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="CHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vehicle_id" type="CHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="license_plate" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="odometer_reading" type="INT" defaultValue="5">
+                <constraints nullable="false"/>
+            </column>
+            <column name="purchase_price" type="DECIMAL(10,2)" defaultValue="0.0"/>
+            <column name="purchase_date" type="DATE"/>
+            <column name="image_file_name" type="VARCHAR(125)"/>
+            <column defaultValueNumeric="0" name="version" type="INT"/>
+            <column name="created_date" type="TIMESTAMP" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="VARCHAR(125)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="TIMESTAMP" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(125)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addUniqueConstraint
+                tableName="user_vehicles"
+                columnNames="user_id, vehicle_id"
+                constraintName="ux_user_and_vehicle_id"
+        />
+        <rollback>
+            <dropTable tableName="user_vehicles"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

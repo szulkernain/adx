@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="satish" id="1">
+        <createTable tableName="vehicles">
+            <column name="id" type="CHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="vin" type="VARCHAR(17)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="make" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="model" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1971" name="year" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="body_class" type="VARCHAR(255)"/>
+            <column name="manufacturer" type="VARCHAR(255)"/>
+            <column name="plant_city" type="VARCHAR(255)"/>
+            <column name="plant_country" type="VARCHAR(255)"/>
+            <column name="trim" type="VARCHAR(255)"/>
+            <column name="series" type="VARCHAR(255)"/>
+            <column name="vehicle_type" type="VARCHAR(255)"/>
+            <column name="engine_configuration" type="VARCHAR(255)"/>
+            <column name="fuel_type_primary" type="VARCHAR(255)"/>
+            <column name="displacement_cc" type="DECIMAL(6,2)" defaultValueNumeric="250"/>
+            <column name="displacement_liter" type="DECIMAL(6,2)" defaultValueNumeric="1000"/>
+            <column name="engine_cylinders" type="INT" defaultValueNumeric="2"/>
+            <column name="engine_hp" type="DECIMAL(6,2)" defaultValueNumeric="100"/>
+            <column defaultValueNumeric="0" name="version" type="INT" />
+            <column name="created_date" type="TIMESTAMP" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="VARCHAR(125)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="TIMESTAMP" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(125)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="vehicles"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

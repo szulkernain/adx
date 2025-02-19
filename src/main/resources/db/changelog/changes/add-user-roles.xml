@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="satish" id="1">
+        <sql>
+            INSERT INTO roles(id, name, description)
+            VALUES ('cc1d71e9-ca5c-49ae-8fab-2c086817213e', 'ROLE_SUBSCRIBER', 'Subscriber of TMA service');
+
+            INSERT INTO roles(id, name, description)
+            VALUES ('cdbc947f-eb29-42eb-ad0a-a001c1bd7e80', 'ROLE_ADMIN',
+                    'A user who can manage all aspects of TMA service');
+        </sql>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="satish" id="1">
+        <createTable tableName="vehicle_service_logs">
+            <column name="id" type="CHAR(36)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_vehicle_id" type="CHAR(36)">
+                <constraints nullable="false" foreignKeyName="vehicle_services_fk_1" references="user_vehicles(id)" />
+            </column>
+            <column name="service_date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="service_type" type="VARCHAR(125)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="service_summary" type="VARCHAR(125)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="odometer_reading" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gallons" type="decimal(6,2)"/>
+            <column name="service_cost" type="decimal(8,2)"/>
+            <column name="service_notes" type="VARCHAR(255)"/>
+            <column name="service_provider" type="VARCHAR(255)"/>
+            <column name="service_provider_city" type="VARCHAR(125)"/>
+            <column name="service_provider_province" type="VARCHAR(125)"/>
+            <column name="service_provider_country" type="VARCHAR(125)"/>
+            <column defaultValueNumeric="0" name="version" type="INT" />
+            <column name="created_date" type="TIMESTAMP" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="VARCHAR(125)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_date" type="TIMESTAMP" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="VARCHAR(125)" defaultValue="system">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="vehicle_service_logs"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
